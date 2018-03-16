@@ -4,6 +4,8 @@ class Solution:
     """
     one solution backtracking 
     """
+    
+    """
     def __init__(self):
         self.result = 0
         
@@ -42,3 +44,22 @@ class Solution:
             self.backTrace(index+1, nums, res)
             res.pop()
         return self.result
+
+    """
+    
+     def triangleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums = sorted(nums)
+        count = 0
+        for i in range(len(nums)-2):
+            if nums[i] == 0:
+                continue
+            k = i + 2
+            for j in range(i+1, len(nums)-1):
+                while k <= (len(nums)-1) and (nums[i]+nums[j])>nums[k]:
+                    k += 1
+                count += k-j-1
+        return count
