@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 class Solution:
     def binarySearch(self, nums, target, l, r):
-        while l < r:
+        while l <= r:
             mid = int((l+r)/2)
+            # print("bS mid:",mid)
             if nums[mid] < target:
                 l = mid +1
             elif nums[mid] > target:
@@ -33,10 +34,11 @@ class Solution:
                 l = mid + 1
             else:
                 r = mid
+        # print("mid:",r)
+        if r-1==0 and target ==nums[0]:
+            return 0
+        if r==len(nums)-1 and target ==nums[r]:
+            return r
         lindex = self.binarySearch(nums, target, 0, r-1)
         rindex = self.binarySearch(nums, target, r, len(nums)-1)
         return max(lindex,rindex)
-
-
-
-
